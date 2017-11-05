@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="MySQL - temperature@178.219.93.93" uuid="12a888dc-0987-4b54-a587-6202b48d65f3">
+    <database-info product="MySQL" version="5.1.69" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.5">
+      <schema id="1" name="temperature"/>
+      <table id="2" parent="1" name="computer"/>
+      <table id="3" parent="1" name="temperature"/>
+      <table id="4" parent="1" name="turn_on_pc"/>
+      <routine id="5" parent="1" name="set_summer_time">
+        <routine-kind>FUNCTION</routine-kind>
+      </routine>
+      <routine id="6" parent="1" name="set_winter_time">
+        <routine-kind>FUNCTION</routine-kind>
+      </routine>
+      <column id="7" parent="2" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="8" parent="2" name="time">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="9" parent="2" name="turn_on">
+        <data-type>varchar(45)</data-type>
+      </column>
+      <key id="10" parent="2" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="11" parent="3" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11) unsigned</data-type>
+      </column>
+      <column id="12" parent="3" name="date">
+        <mandatory>1</mandatory>
+        <data-type>timestamp</data-type>
+        <default-expression>&apos;CURRENT_TIMESTAMP&apos;</default-expression>
+      </column>
+      <column id="13" parent="3" name="t_outside">
+        <mandatory>1</mandatory>
+        <data-type>float</data-type>
+      </column>
+      <column id="14" parent="3" name="t_inside_1">
+        <mandatory>1</mandatory>
+        <data-type>float</data-type>
+      </column>
+      <key id="15" parent="3" name="PRIMARY">
+        <columns>id</columns>
+        <primary>1</primary>
+      </key>
+      <column id="16" parent="4" name="id">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="17" parent="4" name="status">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <key id="18" parent="4" name="PRIMARY">
+        <columns>id
+status</columns>
+        <primary>1</primary>
+      </key>
+      <argument id="19" parent="5">
+        <direction>RETURN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+      <argument id="20" parent="6">
+        <direction>RETURN</direction>
+        <data-type>int(11)</data-type>
+      </argument>
+    </database-model>
+  </data-source>
+</component>
