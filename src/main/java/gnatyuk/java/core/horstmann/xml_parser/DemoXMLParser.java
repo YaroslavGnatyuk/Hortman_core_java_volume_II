@@ -40,7 +40,7 @@ public class DemoXMLParser {
                     books.add(book);
                 }
             }
-//            books.forEach(System.out::println);
+            books.forEach(System.out::println);
         } catch (ParserConfigurationException | SAXException | NullPointerException | IOException e) {
             logger.warning(e.getCause().getMessage());
             System.out.println();
@@ -68,11 +68,7 @@ public class DemoXMLParser {
                             book.setAuthor(author);
                             break;
                         }
-                        case "title":{
-                            String title = bookField.getTextContent();
-                            book.setTitle(title);
-                            break;
-                        }
+
                         case "genre":{
                             String genre = bookField.getTextContent();
                             book.setGenre(genre);
