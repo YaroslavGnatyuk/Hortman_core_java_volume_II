@@ -68,11 +68,7 @@ public class DemoXMLParser {
                             book.setAuthor(author);
                             break;
                         }
-                        case "title":{
-                            String title = bookField.getTextContent();
-                            book.setTitle(title);
-                            break;
-                        }
+
                         case "genre":{
                             String genre = bookField.getTextContent();
                             book.setGenre(genre);
