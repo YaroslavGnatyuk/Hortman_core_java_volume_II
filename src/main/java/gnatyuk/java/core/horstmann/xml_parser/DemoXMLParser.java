@@ -25,6 +25,7 @@ public class DemoXMLParser {
         List<Book> books = new ArrayList<>();
         DemoXMLParser xmlParser = new DemoXMLParser();
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        factory.setIgnoringElementContentWhitespace(Boolean.TRUE);
         try {
             DocumentBuilder documentBuilder = factory.newDocumentBuilder();
             Document document = documentBuilder.parse(xmlParser.getResourceFile(XML_FILE));
@@ -33,12 +34,14 @@ public class DemoXMLParser {
             NodeList nodeList = root.getChildNodes();
 
             for (int i = 0; i < nodeList.getLength(); i++) {
-                Node node = nodeList.item(i);
+                Book book = xmlParser.getBook_v1(nodeList.item(i));
+                books.add(book);
+                /*Node node = nodeList.item(i);
                 Book book = xmlParser.getBook(node);
 
                 if (book.getId() != null) {
                     books.add(book);
-                }
+                }*/
             }
             books.forEach(System.out::println);
         } catch (ParserConfigurationException | SAXException | NullPointerException | IOException e) {
@@ -99,6 +102,19 @@ public class DemoXMLParser {
                 }
             }
         }
+        return book;
+    }
+
+    private Book getBook_v1(Node nodeBook){
+        Book book = new Book();
+        book.setId(nodeBook.getAttributes().getNamedItem("id").getTextContent());
+        NodeList list = nodeBook.getChildNodes();
+        book.setAuthor(list.item(0).getTextContent());
+        book.setTitle(list.item(1).getTextContent());
+        book.setGenre(list.item(2).getTextContent());
+        book.setPrice(Float.parseFloat(list.item(3).getTextContent()));
+        book.setPublishDate(list.item(4).getTextContent());
+        book.setDescription(list.item(5).getTextContent());
         return book;
     }
 }
