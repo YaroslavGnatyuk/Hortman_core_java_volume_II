@@ -26,6 +26,7 @@ public class DemoXMLParser {
         DemoXMLParser xmlParser = new DemoXMLParser();
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         factory.setIgnoringElementContentWhitespace(Boolean.TRUE);
+        factory.setValidating(Boolean.TRUE);
         try {
             DocumentBuilder documentBuilder = factory.newDocumentBuilder();
             Document document = documentBuilder.parse(xmlParser.getResourceFile(XML_FILE));
@@ -55,6 +56,7 @@ public class DemoXMLParser {
         return new File(classLoader.getResource(fileName).getFile());
     }
 
+    //can return empty book!
     private Book getBook(Node nodeBook){
         Book book = new Book();
         if(nodeBook instanceof Element) {
